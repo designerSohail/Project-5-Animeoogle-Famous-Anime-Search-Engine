@@ -1,0 +1,18 @@
+.wrapper .box {
+  -webkit-box-shadow: 0px 5px 10px 1px rgba(168,168,168,.5);
+  -moz-box-shadow: 0px 5px 10px 1px rgba(168,168,168,.5);
+  box-shadow: 0px 5px 10px 1px rgba(168,168,168,.5);
+  width: 33.4em;
+  font-family: sans-serif;
+}
+.wrapper .box input[type="text"] {
+  outline: none;
+  padding: .7em .7em;
+  width: 40rem;
+  font-size: 1.1em;
+  border: none;
+}
+.wrapper center h1 {
+  font-size: 4em;
+  margin-top: 2em;
+}
