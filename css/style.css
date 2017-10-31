@@ -7,6 +7,8 @@
 }
 body {
   font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 section#main .wrapper .box,
 section#search-header .box {
@@ -53,7 +55,7 @@ section#search-header {
   display: flex;
 }
 section#main-contents {
-  margin: 0em 8em;
+  margin: 0em 8em auto;
   padding: 2em;
 }
 section#main-contents p {
@@ -69,7 +71,8 @@ section#main-contents small {
   margin: 5px 0px;
   margin-right: 8px;
 }
-section#main-contents small:hover {
+section#main-contents small:hover,
+section#search-header a button.opt-button:hover {
   background-color: #34495e;
 }
 section#main-contents small a {
@@ -77,6 +80,17 @@ section#main-contents small a {
 }
 section#main-contents .list-content {
   margin-top: 1em;
+}
+section#search-header a button.opt-button {
+  outline: none;
+  background: #727272;
+  border: none;
+  color: #fff;
+  padding: 1em;
+  padding-bottom: 1.2em;
+  margin-left: 1em;
+  border-radius: 4px;
+  cursor: pointer;
 }
 footer {
   padding: 1em 4em;;

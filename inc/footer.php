@@ -2,34 +2,33 @@
   <div class="footer-content">
     <ul class="genres">
       <h2>Genres</h2>
-      <li><a href="output.php?genre=action">Action</a></li>
-      <li><a href="output.php?genre=adventure">Adventure</a></li>
-      <li><a href="output.php?genre=story">Story</a></li>
-      <li><a href="output.php?genre=funny">Funny</a></li>
+      <li><a href="output.php?genre=action">Action Fiction</a></li>
+      <li><a href="output.php?genre=adventure">Adventure Fiction</a></li>
+      <li><a href="output.php?genre=fantasy">Fantasy</a></li>
+      <li><a href="output.php?genre=dark">Dark Fantasy</a></li>
     </ul>
     <ul>
       <h2 style="visibility: hidden;">Genres</h2>
-      <li><a href="ouput.php?genre=scary">Scary</a></li>
-      <li><a href="ouput.php?genre=adult">Adult</a></li>
-      <li><a href="ouput.php?genre=magin">Magic</a></li>
-      <li><a href="ouput.php?genre=movie">Movie</a></li>
+      <li><a href="output.php?genre=adventure">Adventure</a></li>
+      <li><a href="output.php?genre=shounen">Shounen</a></li>
+      <li><a href="output.php?genre=comedy">comedy</a></li>
+      <li><a href="output.php?genre=science">Science Fiction</a></li>
+    </ul>
+    <ul>
+      <h2 style="visibility: hidden">Genres</h2>
+      <li><a href="output.php?genre=superhero">Superhero Fiction</a></li>
+      <li><a href="output.php?genre=parody">Parody</a></li>
+      <li><a href="output.php?genre=supernatural">Supernatural Fiction</a></li>
     </ul>
     <ul class="support-websites">
       <h2>Support Websites</h2>
-      <li><a href="https://www.google.com">Google</a></li>
-      <li><a href="#gogo-anime">Gogoanime</a></li>
+      <li><a href="https://www.google.com" target="_blank">Google</a></li>
+      <li><a href="https://ww3.gogoanime.io/" target="_blank">Gogoanime</a></li>
     </ul>
     <ul class="social">
       <h2>Social</h2>
-      <li><a href="#myfbprofile">Facebook</a></li>
-      <li><a href="#mygpprofile">Google+</a></li>
-      <li><a href="#myghprofile">Github</a></li><br>
-    </ul>
-    <ul>
-      <h2>Support Friends</h2>
-      <li><a href="#malik">Malik</a>  </li>
-      <li><a href="#shashi">Shashi</a></li>
-      <li><a href="#gourav">Gourav</a></li>
+      <li><a href="https://www.facebook.com/profile.php?id=100014494628811" target="_blank">Facebook</a></li>
+      <li><a href="https://github.com/designerSohail" target="_blank">Github</a></li><br>
     </ul>
   </div>
   <center>&copy; <?php echo date('Y'); ?> Sohail Khan</center>

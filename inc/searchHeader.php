@@ -19,4 +19,5 @@
       <input type="text" name="name" placeholder="Enter anime name">
     </form>
   </div>
+  <a href="output.php"><button class="opt-button">View All</button></a>
 </section>
