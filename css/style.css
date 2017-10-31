@@ -1,21 +1,96 @@
-.wrapper .box {
+* {
+  list-style-type: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: sans-serif;
+}
+section#main .wrapper .box,
+section#search-header .box {
   -webkit-box-shadow: 0px 5px 10px 1px rgba(168,168,168,.5);
   -moz-box-shadow: 0px 5px 10px 1px rgba(168,168,168,.5);
   box-shadow: 0px 5px 10px 1px rgba(168,168,168,.5);
   width: 33.4em;
   font-family: sans-serif;
 }
-.wrapper .box input[type="text"] {
+section#main .wrapper h1 {
+  margin-bottom: 1.6em;
+}
+section#main .wrapper .box input[type="text"],
+section#search-header .box input[type="text"] {
   outline: none;
   padding: .7em .7em;
   width: 40rem;
   font-size: 1.1em;
   border: none;
 }
-.wrapper center h1 span {
-  display: inline-block;
-  font-size: 2.2em;
+section#search-header h1 span,
+section#main .wrapper center h1 span {
   font-family: 'Metal Mania', sans-serif;
-  margin-top: 2.5em;
+}
+section#main .wrapper center h1 span {
+  display: inline-block;
+  font-size: 2.3em;
+  margin-top: 1.82em;
   letter-spacing: .1em;
+}
+section#main {
+  margin-bottom: 14.67em;
+}
+section#search-header .box {
+  width: 40em;
+}
+section#search-header h1 {
+  margin-right: 1em;
+  font-size: 2.2em;
+}
+section#search-header {
+  background: #f9f9f9;
+  padding: 1em 3em;
+  display: flex;
+}
+section#main-contents {
+  margin: 0em 8em;
+  padding: 2em;
+}
+section#main-contents p {
+  color: #727272;
+  white-space: nowrap;
+  width: 500px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+section#main-contents small {
+  background: #727272;
+  padding: 4px;
+  border-radius: 3px;
+  display: inline-block;
+  margin: 5px 0px;
+}
+section#main-contents small:hover {
+  background-color: #34495e;
+}
+section#main-contents small a {
+  color: #fff;
+}
+footer {
+  padding: 1em 4em;;
+  color: #fff;
+  background-color: #34495e;
+}
+footer#footer .footer-content ul li {
+  margin-top: .2em;
+}
+footer#footer .footer-content ul li a {
+  color: #ccc;
+}
+footer#footer .footer-content ul li a:hover {
+  color: #fff;
+}
+footer#footer .footer-content {
+  display: flex;
+  justify-content: space-between;
 }
