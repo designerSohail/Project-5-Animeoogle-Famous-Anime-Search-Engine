@@ -4,7 +4,7 @@
       $value =  '%' . trim($value) . '%';
       include 'connection.php';
       try {
-        $result = $db->prepare('SELECT title, description, genre
+        $result = $db->prepare('SELECT id, title, description, genre
           FROM animeDetails
           WHERE title LIKE ?
         ');
@@ -18,5 +18,18 @@
       return $catalog;
     }
   }
-  
+  class ShowFunctions {
+    public function getListItem($catalog) {
+      $genres  = explode(' ', $catalog['genre']);
+      $output  = '';
+      $output .= '<div class="list-content">';
+      $output .= '<h3><a href=details.php?id="' . $catalog['id'] . '">' . $catalog['title'] . '</a></h3>';
+      $output .= '<p>' . $catalog['description'] . '</p>';
+      foreach ($genres as $key => $value) {
+        $output .= '<small><a href="output.php?genre=' . $value . '">' . $value . '</a></small>';
+      }
+      $output .= '</div>';
+      return $output;
+    }
+  }
 ?>

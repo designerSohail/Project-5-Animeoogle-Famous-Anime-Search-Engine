@@ -58,23 +58,25 @@ section#main-contents {
 }
 section#main-contents p {
   color: #727272;
-  white-space: nowrap;
-  width: 500px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  width: 55em;
+  margin: .3em 0em;
 }
 section#main-contents small {
+  display: inline-block;
   background: #727272;
   padding: 4px;
   border-radius: 3px;
-  display: inline-block;
   margin: 5px 0px;
+  margin-right: 8px;
 }
 section#main-contents small:hover {
   background-color: #34495e;
 }
 section#main-contents small a {
   color: #fff;
+}
+section#main-contents .list-content {
+  margin-top: 1em;
 }
 footer {
   padding: 1em 4em;;
