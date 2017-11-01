@@ -5,18 +5,23 @@
   margin: 0;
   padding: 0;
 }
+*:visited {
+  color: blue;
+}
 body {
   font-family: sans-serif;
   display: flex;
   flex-direction: column;
 }
+.active {
+  border-bottom: 4px solid blue;
+}
 section#main .wrapper .box,
 section#search-header .box {
-  -webkit-box-shadow: 0px 5px 10px 1px rgba(168,168,168,.5);
-  -moz-box-shadow: 0px 5px 10px 1px rgba(168,168,168,.5);
-  box-shadow: 0px 5px 10px 1px rgba(168,168,168,.5);
   width: 33.4em;
   font-family: sans-serif;
+  border: .9px solid #ccc;
+  border-radius: 4px;
 }
 section#main .wrapper h1 {
   margin-bottom: 1.6em;
@@ -28,6 +33,7 @@ section#search-header .box input[type="text"] {
   width: 40rem;
   font-size: 1.1em;
   border: none;
+  border-radius: 4px;
 }
 section#search-header h1 span,
 section#main .wrapper center h1 span {
@@ -63,7 +69,7 @@ section#main-contents p {
   width: 55em;
   margin: .3em 0em;
 }
-section#main-contents small {
+section#main-contents a small {
   display: inline-block;
   background: #727272;
   padding: 4px;
@@ -75,7 +81,7 @@ section#main-contents small:hover,
 section#search-header a button.opt-button:hover {
   background-color: #34495e;
 }
-section#main-contents small a {
+section#main-contents a small {
   color: #fff;
 }
 section#main-contents .list-content {
@@ -91,6 +97,60 @@ section#search-header a button.opt-button {
   margin-left: 1em;
   border-radius: 4px;
   cursor: pointer;
+}
+section#details .wrapper .column-details {
+  display: flex;
+}
+section#details .wrapper .item-cover-image img {
+  border: 5px solid grey;
+  width: 340px;
+  height: 480px;
+  border-radius: 4px;
+}
+section#details .wrapper h3.breadcrumbs {
+  margin-bottom: 2em;
+  text-align: center;
+}
+section#details .wrapper h3.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+section#details .wrapper {
+  padding: 2em 3em;
+  border: 5px solid #34495e;
+  margin: 2em 5em;
+  border-radius: 4px;
+}
+section#details .wrapper .item-details table {
+  width: 100%;
+}
+section#details .wrapper .item-details table th,
+section#details .wrapper .item-details table td {
+  padding: .5em 1em;
+  padding-left: 2em;
+  font-family: 'Open Sans', sans-serif;
+}
+section#details table td a:hover {
+  text-decoration: underline;
+}
+section#details .wrapper .item-details table th {
+  font-weight: bolder;
+}
+section#nav {
+  background-color: #f9f9f9;
+}
+section#nav ul {
+  display: flex;
+  margin: 0em 10em;
+}
+section#nav ul li{
+  padding: .9em 1.4em;
+}
+section#nav ul li a {
+  color: grey;
+  padding-bottom: .7em;
+}
+section#nav ul li:first-child {
+  padding-left: 0;
 }
 footer {
   padding: 1em 4em;;

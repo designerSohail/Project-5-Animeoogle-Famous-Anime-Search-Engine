@@ -16,7 +16,7 @@
   </a>
   <div class="box">
     <form action="output.php" method="get">
-      <input type="text" name="name" placeholder="Enter anime name">
+      <input class="search" type="text" name="name" placeholder="Enter anime name">
     </form>
   </div>
   <a href="output.php"><button class="opt-button">View All</button></a>

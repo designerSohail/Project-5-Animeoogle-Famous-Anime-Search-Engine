@@ -1,3 +1,4 @@
+</div>
 <footer id="footer">
   <div class="footer-content">
     <ul class="genres">
@@ -32,6 +33,7 @@
     </ul>
   </div>
   <center>&copy; <?php echo date('Y'); ?> Sohail Khan</center>
+  <script src="js/sketch.js"></script>
 </footer>
 </body>
 </html>
