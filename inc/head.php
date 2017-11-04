@@ -9,4 +9,8 @@
     </style>
   </head>
   <body>
+    <div class="alert">
+      <h1>Not Available in Small devices.</h1>
+      <h1>Working on it.</h1>
+    </div>
     <div class="wrapper">

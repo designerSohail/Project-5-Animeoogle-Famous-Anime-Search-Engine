@@ -33,7 +33,9 @@
     </ul>
   </div>
   <center>&copy; <?php echo date('Y'); ?> Sohail Khan</center>
-  <script src="js/sketch.js"></script>
+  <script>
+    <?php include 'js/sketch.js' ?>
+  </script>
 </footer>
 </body>
 </html>

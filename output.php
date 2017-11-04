@@ -6,14 +6,14 @@
   $getItem  = new ItemFunctions();
   $showItem = new ShowFunctions();
 ?>
-<section id="main-contents">
+<section id="main-contents" style="margin-top: 110px;">
   <?php
     $name = $genre = null;
     $empty = array();
     if (isset($_GET) && !empty($_GET)) {
       if (isset($_GET['name'])) {
-        $value  = $_GET['name'];
-        $catalog  = $getItem->getItemsByValue($value);
+        $name  = $_GET['name'];
+        $catalog  = $getItem->getItemsByValue($name);
       }
       if (isset($_GET['genre'])) {
         $genre = $_GET['genre'];

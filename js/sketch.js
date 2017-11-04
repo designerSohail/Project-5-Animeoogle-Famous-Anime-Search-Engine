@@ -7,3 +7,12 @@ input.addEventListener('focus', ()=> {
 input.addEventListener('blur', ()=> {
   box.style.boxShadow = '0px 0px 0px 0px rgba(168,168,168,.5)';
 });
+window.addEventListener('resize', () => {
+  if (window.innerWidth < 1113) {
+    document.querySelector('.alert').style.visibility = 'visible';
+  }});
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 1113) {
+    document.querySelector('.alert').style.visibility = 'hidden';
+  }
+})

@@ -2,12 +2,14 @@
   class ItemFunctions {
     public function getItemsByValue($name) {
       $query = 'SELECT id, title, description, genre
-        FROM animeDetails ORDER BY title ASC
+        FROM animeDetails
+        ORDER BY title ASC
       ';
       if ($name != null) {
         $query = 'SELECT id, title, description, genre
           FROM animeDetails
-          WHERE title LIKE ? ORDER BY title ASC';
+          WHERE title LIKE ?
+          ORDER BY title ASC';
       }
       $name =  '%' . trim($name) . '%';
       include 'connection.php';
@@ -20,6 +22,21 @@
         exit;
       }
       $catalog = $result->fetchAll(PDO::FETCH_ASSOC);
+      if (empty($catalog)) {
+        $name = '%' . substr($name, 1, 2) . '%';
+        try {
+          $result = $db->prepare('SELECT id, title, description, genre
+            FROM animeDetails
+            WHERE title LIKE ?
+            ORDER BY title ASC');
+          $result->bindParam(1, $name, PDO::PARAM_STR);
+          $result->execute();
+        } catch (Exception $e) {
+          echo 'Unable to perform query ' . $e->getMessage();
+          exit;
+        }
+        $catalog = $result->fetchAll(PDO::FETCH_ASSOC);
+      }
       return $catalog;
     }
 
@@ -47,14 +64,57 @@
     }
     public function getItemById($id) {
       include 'connection.php';
-      $query = 'SELECT * FROM animeDetails
-        WHERE id = ?';
+      $query = 'SELECT animeDetails.title, animeDetails.description, animeDetails.genre, animeDetails.ratings, images.src
+        FROM animeDetails
+        LEFT JOIN images ON animeDetails.id = images.id
+        WHERE animeDetails.id = ?
+        UNION
+        SELECT animeDetails.title, animeDetails.description, animeDetails.genre, animeDetails.ratings, images.src FROM animeDetails
+        RIGHT JOIN images ON animeDetails.id = images.id
+        WHERE animeDetails.id = ?
+        ';
       try {
         $result = $db->prepare($query);
         $result->bindParam(1, $id, PDO::PARAM_INT);
+        $result->bindParam(2, $id, PDO::PARAM_INT);
         $result->execute();
       } catch (Exception $e) {
         echo 'Unable to perform query ' . $e->getMessage();
+      }
+      $catalog = $result->fetchAll(PDO::FETCH_ASSOC);
+      return $catalog;
+    }
+    public function getSrcByName($name) {
+      $name = '%' . $name . '%';
+      include 'connection.php';
+      $query = 'SELECT images.src
+        FROM animeDetails
+        LEFT JOIN images ON animeDetails.id = images.id
+        UNION
+        SELECT images.src
+        FROM animeDetails
+        RIGHT JOIN images ON animeDetails.id = images.id
+      ';
+      if ($name != null) {
+        $query = 'SELECT images.src
+          FROM animeDetails
+          LEFT JOIN images ON animeDetails.id = images.id
+          WHERE animeDetails.title LIKE ?
+          UNION
+          SELECT images.src
+          FROM animeDetails
+          RIGHT JOIN images ON images.id = animeDetails.id
+          WHERE animeDetails.title LIKE ?
+        ';
+      }
+      try {
+        $result = $db->prepare($query);
+        $result->bindParam(1, $name, PDO::PARAM_STR);
+        $result->bindParam(2, $name, PDO::PARAM_STR);
+        $result->execute();
+      } catch (Exception $e) {
+        echo 'Unable to perform query ' . $e->getMessage();
+        exit;
       }
       $catalog = $result->fetchAll(PDO::FETCH_ASSOC);
       return $catalog;
@@ -88,7 +148,7 @@
       $output .= '  <td>' . $item['title'] . '</td>';
       $output .= '</tr>';
       $output .= '<tr>';
-      $output .= '  <th> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description</th>';
+      $output .= '  <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description</th>';
       $output .= '  <td>' . $item['description'] . '</td>';
       $output .= '</tr>';
       $output .= '<tr>';

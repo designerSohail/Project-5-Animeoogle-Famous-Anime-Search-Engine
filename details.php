@@ -6,7 +6,7 @@
   $showItem = new ShowFunctions();
   $catalog  = $getItem->getItemById($id);
 ?>
-<section id="details">
+<section id="details" style="margin-top: 110px;">
   <div class="wrapper">
     <h3 class="breadcrumbs"><?php
       foreach ($catalog as $key => $value) {
@@ -19,7 +19,7 @@
      ?></h3>
     <div class="column-details">
       <div class="item-cover-image">
-        <img src="https://orig00.deviantart.net/4816/f/2008/041/9/b/naruto_volume_41_cover_by_kuumi.jpg" alt="Cover Image">
+        <img src="<?= $catalog[0]['src']; ?>" alt="Cover Image">
       </div>
       <div class="item-details">
         <table>
