@@ -4,15 +4,15 @@
   include 'inc/classes.php';
   include 'inc/searchHeader.php';
   include 'inc/nav.php';
-  $name = $_SESSION['arg'];
+  $value = $_SESSION['arg'];
   $getItem  = new ItemFunctions();
   $showItem = new ShowFunctions();
-  $catalog  = $getItem->getSrcByName($name);
+  $catalog  = $getItem->getSrcByName($value);
 ?>
 <section id="img-gallery">
   <?php
     foreach ($catalog as $key => $value) {
-      echo '<img src="' . $value['src'] . '">';
+      echo '<img src="' . $value['src'] . '" alt="' . $value['title'] . '">';
     }
   ?>
 </section>

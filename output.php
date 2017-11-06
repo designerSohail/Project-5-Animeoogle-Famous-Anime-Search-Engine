@@ -8,20 +8,12 @@
 ?>
 <section id="main-contents" style="margin-top: 110px;">
   <?php
-    $name = $genre = null;
+    $value = null;
     $empty = array();
     if (isset($_GET) && !empty($_GET)) {
-      if (isset($_GET['name'])) {
-        $name  = $_GET['name'];
-        $catalog  = $getItem->getItemsByValue($name);
-      }
-      if (isset($_GET['genre'])) {
-        $genre = $_GET['genre'];
-        $catalog = $getItem->getItemByGenre($genre);
-      }
-    } else {
-      $catalog = $getItem->getItemsByValue($name);
+      $value = $_GET['name'] ? $_GET['name'] : $_GET['genre'];
     }
+    $catalog = $getItem->getItems($value);
     if (!empty($catalog)) {
       foreach ($catalog as $key => $value) {
         echo $showItem->getListItem($value);

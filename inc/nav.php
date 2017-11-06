@@ -11,6 +11,7 @@
   }
   if (empty($_GET)) {
     $_SESSION['arg'] = '';
+    $get = '';
   }
 ?>
 <section id="nav">

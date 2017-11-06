@@ -10,9 +10,13 @@ input.addEventListener('blur', ()=> {
 window.addEventListener('resize', () => {
   if (window.innerWidth < 1113) {
     document.querySelector('.alert').style.visibility = 'visible';
+    document.querySelector('body').style.visibility = 'hidden';
+    document.querySelector('body').style.overflow = 'hidden';
   }});
 window.addEventListener('resize', () => {
   if (window.innerWidth > 1113) {
     document.querySelector('.alert').style.visibility = 'hidden';
+    document.querySelector('body').style.visibility = 'visible';
+    document.querySelector('body').style.overflow = 'auto';
   }
 })

@@ -1,21 +1,22 @@
 <?php
   class ItemFunctions {
-    public function getItemsByValue($name) {
+    public function getItems($value) {
       $query = 'SELECT id, title, description, genre
         FROM animeDetails
         ORDER BY title ASC
       ';
-      if ($name != null) {
+      if ($value != null) {
         $query = 'SELECT id, title, description, genre
           FROM animeDetails
-          WHERE title LIKE ?
+          WHERE title LIKE ? OR genre LIKE ?
           ORDER BY title ASC';
       }
-      $name =  '%' . trim($name) . '%';
+      $value =  '%' . trim($value) . '%';
       include 'connection.php';
       try {
         $result = $db->prepare($query);
-        $result->bindParam(1, $name, PDO::PARAM_STR);
+        $result->bindParam(1, $value, PDO::PARAM_STR);
+        $result->bindParam(2, $value, PDO::PARAM_STR);
         $result->execute();
       } catch (Exception $e) {
         echo 'Unable to perform query ' . $e->getMessage();
@@ -23,13 +24,14 @@
       }
       $catalog = $result->fetchAll(PDO::FETCH_ASSOC);
       if (empty($catalog)) {
-        $name = '%' . substr($name, 1, 2) . '%';
+        $value= '%' . substr($value, 1, 2) . '%';
         try {
           $result = $db->prepare('SELECT id, title, description, genre
             FROM animeDetails
-            WHERE title LIKE ?
+            WHERE title LIKE ? OR genre LIKE ?
             ORDER BY title ASC');
-          $result->bindParam(1, $name, PDO::PARAM_STR);
+          $result->bindParam(1, $value, PDO::PARAM_STR);
+          $result->bindParam(2, $value, PDO::PARAM_STR);
           $result->execute();
         } catch (Exception $e) {
           echo 'Unable to perform query ' . $e->getMessage();
@@ -39,69 +41,47 @@
       }
       return $catalog;
     }
-
-    public function getItemByGenre($genre) {
-      $query = 'SELECT id, title, description, genre
-        FROM animeDetails ORDER BY title ASC
-      ';
-      if ($genre != null) {
-        $query = 'SELECT id, title, description, genre
-          FROM animeDetails
-          WHERE genre LIKE ? ORDER BY title ASC';
-      }
-      $genre =  '%' . trim($genre) . '%';
-      include 'connection.php';
-      try {
-        $result = $db->prepare($query);
-        $result->bindParam(1, $genre, PDO::PARAM_STR);
-        $result->execute();
-      } catch (Exception $e) {
-        echo 'Unable to perform query ' . $e->getMessage();
-        exit;
-      }
-      $catalog = $result->fetchAll(PDO::FETCH_ASSOC);
-      return $catalog;
-    }
     public function getItemById($id) {
-      include 'connection.php';
+      include 'inc/connection.php';
       $query = 'SELECT animeDetails.title, animeDetails.description, animeDetails.genre, animeDetails.ratings, images.src
         FROM animeDetails
         LEFT JOIN images ON animeDetails.id = images.id
         WHERE animeDetails.id = ?
         UNION
-        SELECT animeDetails.title, animeDetails.description, animeDetails.genre, animeDetails.ratings, images.src FROM animeDetails
+        SELECT animeDetails.title, animeDetails.description, animeDetails.genre, animeDetails.ratings, images.src
+        FROM animeDetails
         RIGHT JOIN images ON animeDetails.id = images.id
         WHERE animeDetails.id = ?
-        ';
+      ';
       try {
         $result = $db->prepare($query);
         $result->bindParam(1, $id, PDO::PARAM_INT);
         $result->bindParam(2, $id, PDO::PARAM_INT);
         $result->execute();
       } catch (Exception $e) {
-        echo 'Unable to perform query ' . $e->getMessage();
+        echo 'Unable to perform query '. $e->getMessage();
       }
       $catalog = $result->fetchAll(PDO::FETCH_ASSOC);
       return $catalog;
     }
-    public function getSrcByName($name) {
-      $name = '%' . $name . '%';
+    public function getSrcByName($value) {
+      $value = '%' . $value . '%';
       include 'connection.php';
-      $query = 'SELECT images.src
+      $query = 'SELECT images.src, animeDetails.title
         FROM animeDetails
         LEFT JOIN images ON animeDetails.id = images.id
         UNION
-        SELECT images.src
+        SELECT images.src, animeDetails.title
         FROM animeDetails
         RIGHT JOIN images ON animeDetails.id = images.id
       ';
-      if ($name != null) {
-        $query = 'SELECT images.src
+      if ($value != null) {
+        $query = 'SELECT images.src, animeDetails.title
           FROM animeDetails
           LEFT JOIN images ON animeDetails.id = images.id
           WHERE animeDetails.title LIKE ?
           UNION
-          SELECT images.src
+          SELECT images.src, animeDetails.title
           FROM animeDetails
           RIGHT JOIN images ON images.id = animeDetails.id
           WHERE animeDetails.title LIKE ?
@@ -109,14 +89,36 @@
       }
       try {
         $result = $db->prepare($query);
-        $result->bindParam(1, $name, PDO::PARAM_STR);
-        $result->bindParam(2, $name, PDO::PARAM_STR);
+        $result->bindParam(1, $value, PDO::PARAM_STR);
+        $result->bindParam(2, $value, PDO::PARAM_STR);
         $result->execute();
       } catch (Exception $e) {
         echo 'Unable to perform query ' . $e->getMessage();
         exit;
       }
       $catalog = $result->fetchAll(PDO::FETCH_ASSOC);
+      if (empty($catalog)) {
+        $value= '%' . substr($value, 1, 2) . '%';
+        try {
+          $result = $db->prepare('SELECT images.src, animeDetails.title
+            FROM animeDetails
+            LEFT JOIN images ON animeDetails.id = images.id
+            WHERE animeDetails.title LIKE ?
+            UNION
+            SELECT images.src, animeDetails.title
+            FROM animeDetails
+            RIGHT JOIN images ON images.id = animeDetails.id
+            WHERE animeDetails.title LIKE ?
+          ');
+          $result->bindParam(1, $value, PDO::PARAM_STR);
+          $result->bindParam(2, $value, PDO::PARAM_STR);
+          $result->execute();
+        } catch (Exception $e) {
+          echo 'Unable to perform query ' . $e->getMessage();
+          exit;
+        }
+        $catalog = $result->fetchAll(PDO::FETCH_ASSOC);
+      }
       return $catalog;
     }
   }
