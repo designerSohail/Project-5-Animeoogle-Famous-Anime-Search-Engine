@@ -11,7 +11,8 @@
     $value = null;
     $empty = array();
     if (isset($_GET) && !empty($_GET)) {
-      $value = $_GET['name'] ? $_GET['name'] : $_GET['genre'];
+      if (isset($_GET['name'])) $value = $_GET['name'];
+      if (isset($_GET['genre'])) $value = $_GET['genre'];
     }
     $catalog = $getItem->getItems($value);
     if (!empty($catalog)) {

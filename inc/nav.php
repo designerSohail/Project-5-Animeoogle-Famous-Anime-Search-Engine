@@ -19,6 +19,6 @@
     <li><a<?php if($location=='home') echo ' class="active"'?> href="output.php<?= $get; ?>">Home</a></li>
     <li><a<?php if($location=='images') echo ' class="active"'?> href="images.php<?= $get; ?>">Images</a</li>
     <li><a<?php if($location=='videos') echo ' class="active"'?> href="videos.php<?= $get; ?>">Videos</a></li>
-    <li><a<?php if($location=='contact') echo ' class="active"'?> href="contact.php">Contact</a></li>
+    <li><a<?php if($location=='contact') echo ' class="active"'?> href="feedback.php">Feedback</a></li>
   </ul>
 </section>

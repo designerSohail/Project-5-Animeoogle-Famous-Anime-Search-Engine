@@ -251,6 +251,89 @@ section#img-gallery img {
   margin: 1em;
   cursor: pointer;
 }
+section#contact {
+  margin-top: 10em;
+  padding: 0em 6em;
+}
+section#contact label,
+section#contact input,
+textarea {
+  display: block;
+  margin-top: 1em;
+}
+section#contact label {
+  font-weight: bold;
+}
+section#contact input[type="text"],
+section#contact input[type="email"],
+section#contact textarea {
+  font-family: sans-serif;
+  padding: .4em .6em;
+  outline: none;
+  border-radius: 4px;
+  border: 2px solid #7f8c8d;
+  background: #f4f5f7;
+  font-size: 1.1em;
+  width: 100%;
+}
+section#contact input[type="text"]:focus,
+section#contact input[type="email"]:focus,
+section#contact textarea:focus {
+  background: #fff;
+  border: 2px solid #27ae60;
+}
+section#contact input[type="submit"] {
+  background: #27ae60;
+  color: #fff;
+  outline: none;
+  padding: .6em 1em;
+  border: 2px solid #f4f5f7;
+  font-weight: bold;
+  border-radius: 4px;
+  font-size: 1em;
+  cursor: pointer;
+}
+section#contact .container {
+  border-radius: 4px;
+  border: 2px solid #7f8c8d;
+  margin: 1em;
+}
+section#contact .container h2 {
+  text-align: center;
+  background-color: #34495e;
+  border-radius: 2px;
+  padding: .8em 0em;
+  color: #fff;
+}
+section#contact .wrapper {
+  padding: .4em 2em;
+  display: flex;
+}
+section#contact .container p.error {
+  text-align: center;
+  background: #e67e22;
+  border-radius: 4px;
+  color: #fff;
+  padding: .8em;
+  margin: .5rem .4rem;
+}
+section#contact h1 {
+  color: tomato;
+  text-align: center;
+  margin-top: 12em;
+  margin-bottom: 7.15em;
+}
+section#contact .form-notes li {
+  list-style-type: circle;
+  margin-left: 2rem;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: .5rem;
+}
+section#contact .form-notes p {
+  margin-top: 2rem;
+  font-size: 1.1em;
+}
 footer {
   padding: 1em 4em;;
   color: #fff;
