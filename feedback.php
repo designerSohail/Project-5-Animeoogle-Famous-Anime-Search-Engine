@@ -11,6 +11,7 @@
     if ($name == '' || $email == '' || $comment == '') {
       $error = '<p class="error">Please Fill out the form properly</p>';
     }
+    // TODO: Use php mailer class to send email to us from user
     if (!isset($error)) {
       header("Location:feedback.php?status=success");
     }
